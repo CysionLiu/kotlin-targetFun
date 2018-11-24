@@ -17,6 +17,8 @@
 		</activity>
 		<activity android:name=".activity.EditTextActivity">
 		</activity>
+		<activity android:name=".activity.ViewPagerActivity">
+		</activity>
 	</application>
 
 </manifest>

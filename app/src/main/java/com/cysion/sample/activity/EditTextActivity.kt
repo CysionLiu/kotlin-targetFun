@@ -3,7 +3,7 @@ package com.cysion.sample.activity
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import com.cysion.sample.R
-import com.cysion.sample.log
+import com.cysion.sample.logd
 import com.cysion.targetfun.addTextChangedListener
 import kotlinx.android.synthetic.main.activity_edittext.*
 
@@ -14,30 +14,30 @@ class EditTextActivity : AppCompatActivity() {
         setContentView(R.layout.activity_edittext)
 
         et1.addTextChangedListener {
-            _onTextChanged { s, start, before, count ->
-                tvShow.text = "_onTextChanged:$s"
-                log("_onTextChanged:$s")
+            onTextChanged_ex { s, start, before, count ->
+                tvShow.text = "onTextChanged_ex:$s"
+                logd("onTextChanged_ex:$s")
             }
         }
         et2.addTextChangedListener {
-            _beforeTextChanged { s, start, count, after ->
-                log("_beforeTextChanged:$s")
+            beforeTextChanged_ex { s, start, count, after ->
+                logd("beforeTextChanged_ex:$s")
             }
-            _afterTextChanged {
-                tvShow.text = "_afterTextChanged:${it.toString()}"
-                log("_afterTextChanged:${it.toString()}")
+            afterTextChanged_ex {
+                tvShow.text = "afterTextChanged_ex:${it.toString()}"
+                logd("afterTextChanged_ex:${it.toString()}")
             }
         }
         et3.addTextChangedListener {
-            _beforeTextChanged { s, start, count, after ->
-                log("_beforeTextChanged:$s")
+            beforeTextChanged_ex { s, start, count, after ->
+                logd("beforeTextChanged_ex:$s")
             }
-            _onTextChanged { s, start, before, count ->
-                log("_onTextChanged:$s")
+            onTextChanged_ex { s, start, before, count ->
+                logd("onTextChanged_ex:$s")
             }
-            _afterTextChanged {
-                tvShow.text = "_afterTextChanged:${it.toString()}"
-                log("_afterTextChanged:${it.toString()}")
+            afterTextChanged_ex {
+                tvShow.text = "afterTextChanged_ex:${it.toString()}"
+                logd("afterTextChanged_ex:${it.toString()}")
             }
         }
     }
