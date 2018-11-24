@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+		xmlns:android="http://schemas.android.com/apk/res/android"
+		xmlns:tools="http://schemas.android.com/tools"
+		xmlns:app="http://schemas.android.com/apk/res-auto"
+		android:orientation="vertical"
+		android:layout_width="match_parent"
+		android:layout_height="match_parent"
+		android:gravity="center_horizontal"
+		tools:context=".MainActivity">
+
+	<ImageView
+			android:id="@+id/img1"
+			android:layout_margin="20dp"
+			android:src="@mipmap/logo"
+			android:layout_width="60dp"
+			android:adjustViewBounds="true"
+			android:layout_height="wrap_content"/>
+
+	<Button
+			android:id="@+id/btnStart1"
+			android:text="start"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"/>
+
+	<ImageView
+			android:id="@+id/img2"
+			android:layout_margin="20dp"
+			android:src="@mipmap/ic_launcher_round"
+			android:layout_width="80dp"
+			android:adjustViewBounds="true"
+			android:layout_height="wrap_content"/>
+
+	<Button
+			android:id="@+id/btnStart2"
+			android:text="start"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"/>
+
+</LinearLayout>

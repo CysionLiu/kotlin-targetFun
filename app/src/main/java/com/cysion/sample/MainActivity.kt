@@ -9,6 +9,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.BaseAdapter
 import android.widget.TextView
+import com.cysion.sample.activity.AnimatorActivity
 import com.cysion.sample.activity.EditTextActivity
 import com.cysion.sample.activity.ViewPagerActivity
 import com.cysion.sample.data.PageData
@@ -33,13 +34,11 @@ class MainActivity : AppCompatActivity() {
     private fun initDataList() {
         datalist.add(PageData(EditTextActivity::class.java, "TextWatcher sample"))
         datalist.add(PageData(ViewPagerActivity::class.java, "OnPageChangeListener sample"))
+        datalist.add(PageData(AnimatorActivity::class.java, "AnimatorListener sample"))
 
     }
 
-
     fun foo() {
-
-
     }
 }
 

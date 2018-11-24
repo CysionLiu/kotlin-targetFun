@@ -19,6 +19,8 @@
 		</activity>
 		<activity android:name=".activity.ViewPagerActivity">
 		</activity>
+		<activity android:name=".activity.AnimatorActivity">
+		</activity>
 	</application>
 
 </manifest>
