@@ -7,13 +7,12 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context=".MainActivity">
-    <EditText
-            android:id="@+id/et1"
+
+
+    <ListView
+            android:id="@+id/listView"
+            android:layout_margin="20dp"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
-    <EditText
-            android:id="@+id/et2"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+            android:layout_height="match_parent"/>
 
 </LinearLayout>
