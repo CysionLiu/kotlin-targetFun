@@ -15,5 +15,12 @@
             android:text="EditText-extension"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
+    <Button
+            android:id="@+id/btnFilter"
+            android:textAllCaps="false"
+            android:layout_margin="20dp"
+            android:text="clickFilter-extension"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
 
 </LinearLayout>

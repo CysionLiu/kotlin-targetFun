@@ -4,6 +4,7 @@ import android.app.Activity
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.view.View
 import android.view.inputmethod.InputMethodManager
 import android.widget.EditText
 
@@ -29,4 +30,16 @@ fun EditText.openKeyBoard() {
 fun EditText.hideKeyBoard() {
     val imm = this.context.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
     imm.hideSoftInputFromWindow(this.windowToken, 0)
+}
+
+fun View.setOnClickListenerFilter(block: ((v: View?) -> Unit)) {
+    setOnClickListener(object : View.OnClickListener {
+        var last = 0L
+        override fun onClick(v: View?) {
+            if (System.currentTimeMillis() - last > 1000) {
+                block(v)
+                last = System.currentTimeMillis()
+            }
+        }
+    })
 }
