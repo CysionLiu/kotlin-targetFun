@@ -9,9 +9,8 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.BaseAdapter
 import android.widget.TextView
-import com.cysion.sample.activity.AnimatorActivity
-import com.cysion.sample.activity.EditTextActivity
-import com.cysion.sample.activity.ViewPagerActivity
+import com.cysion.sample.activity.*
+import com.cysion.sample.activity.other.RecyclerActivity
 import com.cysion.sample.data.PageData
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.item_main_list.view.*
@@ -35,10 +34,9 @@ class MainActivity : AppCompatActivity() {
         datalist.add(PageData(EditTextActivity::class.java, "TextWatcher sample"))
         datalist.add(PageData(ViewPagerActivity::class.java, "OnPageChangeListener sample"))
         datalist.add(PageData(AnimatorActivity::class.java, "AnimatorListener sample"))
-
-    }
-
-    fun foo() {
+        datalist.add(PageData(ListActivity::class.java, "ListView sample"))
+        datalist.add(PageData(RecyclerActivity::class.java, "RecyclerView sample"))
+        datalist.add(PageData(OtherActivity::class.java, "Other extension function sample"))
     }
 }
 
