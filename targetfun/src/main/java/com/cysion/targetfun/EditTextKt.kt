@@ -40,9 +40,5 @@ class TextWatcherObj : TextWatcher {
         _onTextChanged?.invoke(s, start, before, count)
     }
 }
-
-inline fun EditText.addTextChangedListener(func: (TextWatcherObj.() -> Unit)) {
-    val real = TextWatcherObj()
-    func.invoke(real)
-    addTextChangedListener(real)
-}
+inline fun EditText.addTextChangedListener(func: (TextWatcherObj.() -> Unit))=
+    addTextChangedListener(TextWatcherObj().apply(func))

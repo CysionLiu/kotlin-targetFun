@@ -27,7 +27,6 @@ class OnPageChangeListenerObj : ViewPager.OnPageChangeListener {
         _B?.invoke(position)
     }
 
-
     //---
     private var _C: ((state: Int) -> Unit)? = null
 
@@ -38,12 +37,8 @@ class OnPageChangeListenerObj : ViewPager.OnPageChangeListener {
     override fun onPageScrollStateChanged(state: Int) {
         _C?.invoke(state)
     }
-
 }
 
 
-inline fun ViewPager.addOnPageChangeListener(func: (OnPageChangeListenerObj.() -> Unit)) {
-    val real = OnPageChangeListenerObj()
-    func.invoke(real)
-    addOnPageChangeListener(real)
-}
+inline fun ViewPager.addOnPageChangeListener(func: (OnPageChangeListenerObj.() -> Unit)) =
+    addOnPageChangeListener(OnPageChangeListenerObj().apply(func))

@@ -40,8 +40,5 @@ class SeekBarChangeListenerObj : SeekBar.OnSeekBarChangeListener {
 
 }
 
-inline fun SeekBar.setOnSeekBarChangeListener(func: (SeekBarChangeListenerObj.() -> Unit)) {
-    val real = SeekBarChangeListenerObj()
-    func.invoke(real)
-    setOnSeekBarChangeListener(real)
-}
+inline fun SeekBar.setOnSeekBarChangeListener(func: (SeekBarChangeListenerObj.() -> Unit)) =
+    setOnSeekBarChangeListener(SeekBarChangeListenerObj().apply(func))

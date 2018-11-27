@@ -29,7 +29,6 @@ class OnScrollListener : RecyclerView.OnScrollListener() {
 }
 
 
-
 class OnItemTouchListenerObj : RecyclerView.OnItemTouchListener {
 
     //-------------------------------------
@@ -70,14 +69,8 @@ class OnItemTouchListenerObj : RecyclerView.OnItemTouchListener {
     }
 }
 
-inline fun RecyclerView.addOnScrollListener(func: (OnScrollListener.() -> Unit)) {
-    val real = OnScrollListener()
-    func.invoke(real)
-    addOnScrollListener(real)
-}
+inline fun RecyclerView.addOnScrollListener(func: (OnScrollListener.() -> Unit)) =
+    addOnScrollListener(OnScrollListener().apply(func))
 
-inline fun RecyclerView.addOnItemTouchListener(func: (OnItemTouchListenerObj.() -> Unit)) {
-    val real = OnItemTouchListenerObj()
-    func.invoke(real)
-    addOnItemTouchListener(real)
-}
+inline fun RecyclerView.addOnItemTouchListener(func: (OnItemTouchListenerObj.() -> Unit)) =
+    addOnItemTouchListener(OnItemTouchListenerObj().apply(func))

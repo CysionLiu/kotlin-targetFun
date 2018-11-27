@@ -50,14 +50,8 @@ class AnimatorListenerObj : Animator.AnimatorListener {
     }
 }
 
-inline fun ViewPropertyAnimator.setListener(func: (AnimatorListenerObj.() -> Unit)) {
-    val real = AnimatorListenerObj()
-    func.invoke(real)
-    setListener(real)
-}
+inline fun ViewPropertyAnimator.setListener(func: (AnimatorListenerObj.() -> Unit)) =
+    setListener(AnimatorListenerObj().apply(func))
 
-inline fun Animator.addListener(func: (AnimatorListenerObj.() -> Unit)) {
-    val real = AnimatorListenerObj()
-    func.invoke(real)
-    addListener(real)
-}
+inline fun Animator.addListener(func: (AnimatorListenerObj.() -> Unit)) =
+    addListener(AnimatorListenerObj().apply(func))

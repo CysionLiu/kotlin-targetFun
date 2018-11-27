@@ -27,9 +27,7 @@ class OnScrollListenerObj : AbsListView.OnScrollListener {
         _b?.invoke(view, scrollState)
     }
 }
+
 //also available for gridview
-inline fun AbsListView.setOnScrollListener(func: (OnScrollListenerObj.() -> Unit)) {
-    val real = OnScrollListenerObj()
-    func.invoke(real)
-    setOnScrollListener(real)
-}
+inline fun AbsListView.setOnScrollListener(func: (OnScrollListenerObj.() -> Unit)) =
+    setOnScrollListener(OnScrollListenerObj().apply(func))
