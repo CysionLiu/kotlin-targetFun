@@ -10,6 +10,7 @@ import com.cysion.sample.R
 import com.cysion.sample.activity.other.EditExActivity
 import com.cysion.sample.logd
 import com.cysion.sample.logi
+import com.cysion.targetfun.addOnAttachStateChangeListener_ex
 import kotlinx.android.synthetic.main.activity_other.*
 
 class OtherActivity : AppCompatActivity() {
@@ -23,6 +24,15 @@ class OtherActivity : AppCompatActivity() {
 
         btnFilter.setOnClickListener_ex {
             logd("clicked--" + 1543233709L.timeFormat(""))
+        }
+
+        btnFilter.addOnAttachStateChangeListener_ex {
+            onAttached_ex {
+                logd("btnFilter attached")
+            }
+            onDetached_ex {
+                logd("btnFilter detached")
+            }
         }
     }
 
