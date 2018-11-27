@@ -27,7 +27,9 @@
         </activity>
         <activity android:name=".activity.ListActivity">
         </activity>
-        <activity android:name=".activity.other.RecyclerActivity">
+        <activity android:name=".activity.RecyclerActivity">
+        </activity>
+        <activity android:name=".activity.SeekBarActivity">
         </activity>
     </application>
 

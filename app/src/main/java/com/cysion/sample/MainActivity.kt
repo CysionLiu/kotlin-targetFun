@@ -10,7 +10,6 @@ import android.view.ViewGroup
 import android.widget.BaseAdapter
 import android.widget.TextView
 import com.cysion.sample.activity.*
-import com.cysion.sample.activity.other.RecyclerActivity
 import com.cysion.sample.data.PageData
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.item_main_list.view.*
@@ -36,6 +35,7 @@ class MainActivity : AppCompatActivity() {
         datalist.add(PageData(AnimatorActivity::class.java, "AnimatorListener sample"))
         datalist.add(PageData(ListActivity::class.java, "ListView sample"))
         datalist.add(PageData(RecyclerActivity::class.java, "RecyclerView sample"))
+        datalist.add(PageData(SeekBarActivity::class.java, "SeekBar sample"))
         datalist.add(PageData(OtherActivity::class.java, "Other extension function sample"))
     }
 }

@@ -9,7 +9,6 @@ import android.widget.TextView
 import com.cysion.sample.R
 import com.cysion.sample.logd
 import com.cysion.sample.logi
-import com.cysion.targetfun.addOnAttachStateChangeListener_ex
 import com.cysion.targetfun.addOnPageChangeListener
 import kotlinx.android.synthetic.main.activity_viewpager.*
 
