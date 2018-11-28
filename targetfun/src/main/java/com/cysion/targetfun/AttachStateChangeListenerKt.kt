@@ -27,5 +27,5 @@ class AttachStateChangeListenerObj : View.OnAttachStateChangeListener {
     }
 }
 
-inline fun View.addOnAttachStateChangeListener_ex(func: (AttachStateChangeListenerObj.() -> Unit)) =
+inline fun View.addOnAttachStateChangeListener(func: (AttachStateChangeListenerObj.() -> Unit)) =
     addOnAttachStateChangeListener(AttachStateChangeListenerObj().apply(func))

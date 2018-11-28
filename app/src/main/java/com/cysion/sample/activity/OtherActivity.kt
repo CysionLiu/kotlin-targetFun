@@ -5,12 +5,12 @@ import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import com.cysion.other.setOnClickListener_ex
 import com.cysion.other.startActivityForResult_ex
-import com.cysion.other.timeFormat
+import com.cysion.other.timeFormatm
 import com.cysion.sample.R
 import com.cysion.sample.activity.other.EditExActivity
 import com.cysion.sample.logd
 import com.cysion.sample.logi
-import com.cysion.targetfun.addOnAttachStateChangeListener_ex
+import com.cysion.targetfun.addOnAttachStateChangeListener
 import kotlinx.android.synthetic.main.activity_other.*
 
 class OtherActivity : AppCompatActivity() {
@@ -23,10 +23,10 @@ class OtherActivity : AppCompatActivity() {
         }
 
         btnFilter.setOnClickListener_ex {
-            logd("clicked--" + 1543233709L.timeFormat(""))
+            logd("clicked--" + System.currentTimeMillis().timeFormatm(""))
         }
 
-        btnFilter.addOnAttachStateChangeListener_ex {
+        btnFilter.addOnAttachStateChangeListener {
             onAttached_ex {
                 logd("btnFilter attached")
             }
