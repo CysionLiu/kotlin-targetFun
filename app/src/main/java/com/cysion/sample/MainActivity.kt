@@ -36,6 +36,7 @@ class MainActivity : AppCompatActivity() {
         datalist.add(PageData(ListActivity::class.java, "ListView sample"))
         datalist.add(PageData(RecyclerActivity::class.java, "RecyclerView sample"))
         datalist.add(PageData(SeekBarActivity::class.java, "SeekBar sample"))
+        datalist.add(PageData(DrawerActivity::class.java, "DrawerListener sample"))
         datalist.add(PageData(OtherActivity::class.java, "Other extension function sample"))
     }
 }
