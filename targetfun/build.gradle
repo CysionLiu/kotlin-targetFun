@@ -1,6 +1,7 @@
 apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
-
+//for jcenter
+//apply plugin: 'com.novoda.bintray-release'
 android {
     compileSdkVersion 27
     defaultConfig {
@@ -27,3 +28,13 @@ dependencies {
 repositories {
     mavenCentral()
 }
+//for jcenter
+//publish {
+//    userOrg = 'cysion1989'
+//    groupId = 'com.cysion'//jcenter上的路径，你喜欢
+//    artifactId = 'targetfun'
+//    repoName='TargetFun'
+//    publishVersion = '1.0.0'//版本号
+//    desc = 'For ease of Android development'//描述，随便
+//    website = 'https://github.com/CysionLiu/kotlin-targetFun'//网站，随便；
+//}
