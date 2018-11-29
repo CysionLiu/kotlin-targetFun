@@ -11,6 +11,9 @@ import android.widget.BaseAdapter
 import android.widget.TextView
 import com.cysion.sample.activity.*
 import com.cysion.sample.data.PageData
+import com.cysion.targetfun._subscribe
+import io.reactivex.Flowable
+import io.reactivex.Observable
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.item_main_list.view.*
 
@@ -27,6 +30,7 @@ class MainActivity : AppCompatActivity() {
                 startActivity(Intent(this@MainActivity, datalist[position].target))
             }
         }
+        foo()
     }
 
     private fun initDataList() {
@@ -38,6 +42,44 @@ class MainActivity : AppCompatActivity() {
         datalist.add(PageData(SeekBarActivity::class.java, "SeekBar sample"))
         datalist.add(PageData(DrawerActivity::class.java, "DrawerListener sample"))
         datalist.add(PageData(OtherActivity::class.java, "Other extension function sample"))
+    }
+
+    fun foo() {
+        var d = Observable.just("1", "2", "3")
+            .subscribe({
+                logd(it)
+            }, {
+
+            }, {
+
+            })
+
+        Observable.just("a", "b", "c", "d")
+            ._subscribe {
+                _onNext {
+                    logd(it)
+                }
+                _onComplete {
+                    logd("_onComplete")
+                }
+            }
+        Observable.just(
+            PageData(MainActivity::class.java, "one"),
+            PageData(MainActivity::class.java, "two")
+        )
+            ._subscribe {
+                _onSubscribe {
+                    logd("_onSubscribe PageData")
+                }
+                _onNext {
+                    logd(it.name)
+                }
+            }
+        Flowable.just("f_a","f_b","f_c")
+            ._subscribe {
+
+            }
+
     }
 }
 
