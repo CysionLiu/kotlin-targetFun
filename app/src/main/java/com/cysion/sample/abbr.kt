@@ -8,3 +8,7 @@ fun logd(msg: String) {
 fun logi(msg: String) {
     Log.i("flag--", msg)
 }
+
+class Tmp{
+    var name="haha"
+}

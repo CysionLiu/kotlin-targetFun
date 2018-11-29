@@ -13,6 +13,7 @@ class FlowableObj<T> : FlowableSubscriber<T> {
 
     //===
     override fun onSubscribe(s: Subscription) {
+        _a?.invoke(s)
     }
 
     fun _onSubscribe(t: ((s: Subscription) -> Unit)) {
@@ -47,5 +48,6 @@ class FlowableObj<T> : FlowableSubscriber<T> {
         _d?.invoke(e)
     }
 }
+
 inline fun <reified T> Flowable<T>._subscribe(func: FlowableObj<T>.() -> Unit) =
     subscribe(FlowableObj<T>().apply(func))

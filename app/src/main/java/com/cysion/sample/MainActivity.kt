@@ -9,13 +9,15 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.BaseAdapter
 import android.widget.TextView
+import com.cysion.other.addTo
 import com.cysion.sample.activity.*
 import com.cysion.sample.data.PageData
 import com.cysion.targetfun._subscribe
-import io.reactivex.Flowable
 import io.reactivex.Observable
+import io.reactivex.disposables.CompositeDisposable
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.item_main_list.view.*
+import java.util.concurrent.TimeUnit
 
 class MainActivity : AppCompatActivity() {
     var datalist: MutableList<PageData> = mutableListOf()
@@ -44,41 +46,46 @@ class MainActivity : AppCompatActivity() {
         datalist.add(PageData(OtherActivity::class.java, "Other extension function sample"))
     }
 
+    override fun onStop() {
+        super.onStop()
+        com.dispose()
+    }
+
+    var com: CompositeDisposable = CompositeDisposable()
     fun foo() {
-        var d = Observable.just("1", "2", "3")
+        Observable.interval(1, TimeUnit.SECONDS)
             .subscribe({
-                logd(it)
+                logd(it.toString())
             }, {
-
-            }, {
-
-            })
-
-        Observable.just("a", "b", "c", "d")
+                logd("error")
+            },
+                {
+                    logd("finish")
+                }).addTo(com)
+        Observable.interval(1, TimeUnit.SECONDS)
             ._subscribe {
                 _onNext {
-                    logd(it)
+                    logi(it.toString())
                 }
                 _onComplete {
-                    logd("_onComplete")
+                    logi("complete")
                 }
-            }
-        Observable.just(
-            PageData(MainActivity::class.java, "one"),
-            PageData(MainActivity::class.java, "two")
-        )
-            ._subscribe {
-                _onSubscribe {
-                    logd("_onSubscribe PageData")
+                _onError {
+                    logd(it.message.toString())
                 }
-                _onNext {
-                    logd(it.name)
-                }
-            }
-        Flowable.just("f_a","f_b","f_c")
-            ._subscribe {
-
-            }
+            }.addTo(com)
+//        val _subscribe = Observable.just(
+//            PageData(MainActivity::class.java, "one"),
+//            PageData(MainActivity::class.java, "two")
+//        )
+//            ._subscribe {
+//                _onSubscribe {
+//                    logd("_onSubscribe PageData")
+//                }
+//                _onNext {
+//                    logd(it.name)
+//                }
+//            }
 
     }
 }
