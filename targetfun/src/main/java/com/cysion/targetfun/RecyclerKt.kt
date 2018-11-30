@@ -8,7 +8,7 @@ class OnScrollListener : RecyclerView.OnScrollListener() {
     //---------------------------------
     private var _a: ((recyclerView: RecyclerView?, dx: Int, dy: Int) -> Unit)? = null
 
-    fun onScrolled_ex(t: ((recyclerView: RecyclerView?, dx: Int, dy: Int) -> Unit)) {
+    fun _onScrolled(t: ((recyclerView: RecyclerView?, dx: Int, dy: Int) -> Unit)) {
         _a = t
     }
 
@@ -19,7 +19,7 @@ class OnScrollListener : RecyclerView.OnScrollListener() {
     //----------------------------------
     private var _b: ((recyclerView: RecyclerView?, newState: Int) -> Unit)? = null
 
-    fun onScrollStateChanged_ex(t: ((recyclerView: RecyclerView?, newState: Int) -> Unit)) {
+    fun _onScrollStateChanged(t: ((recyclerView: RecyclerView?, newState: Int) -> Unit)) {
         _b = t
     }
 
@@ -34,7 +34,7 @@ class OnItemTouchListenerObj : RecyclerView.OnItemTouchListener {
     //-------------------------------------
     private var _a: ((rv: RecyclerView?, e: MotionEvent?) -> Unit)? = null
 
-    fun onTouchEvent_ex(t: ((rv: RecyclerView?, e: MotionEvent?) -> Unit)) {
+    fun _onTouchEvent(t: ((rv: RecyclerView?, e: MotionEvent?) -> Unit)) {
         _a = t
     }
 
@@ -46,7 +46,7 @@ class OnItemTouchListenerObj : RecyclerView.OnItemTouchListener {
     //-------------------------------------
     private var _b: ((rv: RecyclerView?, e: MotionEvent?) -> Boolean)? = null
 
-    fun onInterceptTouchEvent_ex(t: ((rv: RecyclerView?, e: MotionEvent?) -> Boolean)) {
+    fun _onInterceptTouchEvent(t: ((rv: RecyclerView?, e: MotionEvent?) -> Boolean)) {
         _b = t
     }
 
@@ -60,7 +60,7 @@ class OnItemTouchListenerObj : RecyclerView.OnItemTouchListener {
     //-------------------------------------
     private var _c: ((disallowIntercept: Boolean) -> Unit)? = null
 
-    fun onRequestDisallowInterceptTouchEvent_ex(t: ((disallowIntercept: Boolean) -> Unit)) {
+    fun _onRequestDisallowInterceptTouchEvent(t: ((disallowIntercept: Boolean) -> Unit)) {
         _c = t
     }
 
@@ -69,8 +69,8 @@ class OnItemTouchListenerObj : RecyclerView.OnItemTouchListener {
     }
 }
 
-inline fun RecyclerView.addOnScrollListener(func: (OnScrollListener.() -> Unit)) =
+inline fun RecyclerView._addOnScrollListener(func: (OnScrollListener.() -> Unit)) =
     addOnScrollListener(OnScrollListener().apply(func))
 
-inline fun RecyclerView.addOnItemTouchListener(func: (OnItemTouchListenerObj.() -> Unit)) =
+inline fun RecyclerView._addOnItemTouchListener(func: (OnItemTouchListenerObj.() -> Unit)) =
     addOnItemTouchListener(OnItemTouchListenerObj().apply(func))

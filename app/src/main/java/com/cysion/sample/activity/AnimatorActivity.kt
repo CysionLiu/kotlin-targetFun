@@ -5,8 +5,8 @@ import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import com.cysion.sample.R
 import com.cysion.sample.logd
-import com.cysion.targetfun.addListener
-import com.cysion.targetfun.setListener
+import com.cysion.targetfun._addListener
+import com.cysion.targetfun._setListener
 import kotlinx.android.synthetic.main.activity_animator.*
 
 class AnimatorActivity : AppCompatActivity() {
@@ -19,14 +19,14 @@ class AnimatorActivity : AppCompatActivity() {
                 .apply {
                     duration = 3000
                     repeatCount = 3
-                    addListener {
-                        onAnimationStart_ex {
+                    _addListener {
+                        _onAnimationStart {
                             logd("-------img1 start")
                         }
-                        onAnimationEnd_ex {
+                        _onAnimationEnd {
                             logd("-------img1 end")
                         }
-                        onAnimationRepeat_ex {
+                        _onAnimationRepeat {
                             logd("------img1 repeat")
                         }
                     }
@@ -37,11 +37,11 @@ class AnimatorActivity : AppCompatActivity() {
                 .apply {
                     rotationBy(720f)
                     duration = 3000
-                    setListener {
-                        onAnimationStart_ex {
+                    _setListener {
+                        _onAnimationStart {
                             logd("-------img2 start")
                         }
-                        onAnimationEnd_ex {
+                        _onAnimationEnd {
                             logd("------img2 end")
                         }
                     }

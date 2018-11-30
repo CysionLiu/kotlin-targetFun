@@ -8,7 +8,7 @@ class AnimatorListenerObj : Animator.AnimatorListener {
     //-----------------
     private var _a: ((animation: Animator?) -> Unit)? = null
 
-    fun onAnimationRepeat_ex(t: ((animation: Animator?) -> Unit)) {
+    fun _onAnimationRepeat(t: ((animation: Animator?) -> Unit)) {
         _a = t
     }
 
@@ -19,7 +19,7 @@ class AnimatorListenerObj : Animator.AnimatorListener {
     //------------------
     private var _b: ((animation: Animator?) -> Unit)? = null
 
-    fun onAnimationEnd_ex(t: ((animation: Animator?) -> Unit)) {
+    fun _onAnimationEnd(t: ((animation: Animator?) -> Unit)) {
         _b = t
     }
 
@@ -30,7 +30,7 @@ class AnimatorListenerObj : Animator.AnimatorListener {
     //--------------------
     private var _c: ((animation: Animator?) -> Unit)? = null
 
-    fun onAnimationCancel_ex(t: ((animation: Animator?) -> Unit)) {
+    fun _onAnimationCancel(t: ((animation: Animator?) -> Unit)) {
         _c = t
     }
 
@@ -41,7 +41,7 @@ class AnimatorListenerObj : Animator.AnimatorListener {
     //---------------------
     private var _d: ((animation: Animator?) -> Unit)? = null
 
-    fun onAnimationStart_ex(t: ((animation: Animator?) -> Unit)) {
+    fun _onAnimationStart(t: ((animation: Animator?) -> Unit)) {
         _d = t
     }
 
@@ -50,8 +50,8 @@ class AnimatorListenerObj : Animator.AnimatorListener {
     }
 }
 
-inline fun ViewPropertyAnimator.setListener(func: (AnimatorListenerObj.() -> Unit)) =
+inline fun ViewPropertyAnimator._setListener(func: (AnimatorListenerObj.() -> Unit)) =
     setListener(AnimatorListenerObj().apply(func))
 
-inline fun Animator.addListener(func: (AnimatorListenerObj.() -> Unit)) =
+inline fun Animator._addListener(func: (AnimatorListenerObj.() -> Unit)) =
     addListener(AnimatorListenerObj().apply(func))

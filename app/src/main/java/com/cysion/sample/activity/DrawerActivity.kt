@@ -3,11 +3,11 @@ package com.cysion.sample.activity
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.view.Gravity
-import com.cysion.other.setOnClickListener_ex
+import com.cysion.other._setOnClickListener
 import com.cysion.other.str
 import com.cysion.sample.R
 import com.cysion.sample.logd
-import com.cysion.targetfun.addDrawerListener
+import com.cysion.targetfun._addDrawerListener
 import kotlinx.android.synthetic.main.activity_drawer.*
 
 class DrawerActivity : AppCompatActivity() {
@@ -16,21 +16,21 @@ class DrawerActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_drawer)
 
-        btnOpen.setOnClickListener_ex {
+        btnOpen._setOnClickListener {
             drawer.openDrawer(Gravity.RIGHT)
         }
 
-        drawer.addDrawerListener {
-            onDrawerOpened_ex {
+        drawer._addDrawerListener {
+            _onDrawerOpened {
                 logd("opened")
             }
-            onDrawerClosed_ex {
+            _onDrawerClosed {
                 logd("closed")
             }
-            onDrawerSlide_ex { drawerView, slideOffset ->
+            _onDrawerSlide { drawerView, slideOffset ->
                 logd("slide:${this@DrawerActivity.str(R.string.app_name)}")
             }
-            onDrawerStateChanged_ex {
+            _onDrawerStateChanged {
                 logd("newstate:$it")
             }
         }

@@ -7,7 +7,7 @@ class OnPageChangeListenerObj : ViewPager.OnPageChangeListener {
     //---
     private var _A: ((position: Int, positionOffset: Float, positionOffsetPixels: Int) -> Unit)? = null
 
-    fun onPageScrolled_ex(a: ((position: Int, positionOffset: Float, positionOffsetPixels: Int) -> Unit)) {
+    fun _onPageScrolled(a: ((position: Int, positionOffset: Float, positionOffsetPixels: Int) -> Unit)) {
         _A = a
     }
 
@@ -19,7 +19,7 @@ class OnPageChangeListenerObj : ViewPager.OnPageChangeListener {
     //---
     private var _B: ((position: Int) -> Unit)? = null
 
-    fun onPageSelected_ex(b: ((position: Int) -> Unit)) {
+    fun _onPageSelected(b: ((position: Int) -> Unit)) {
         _B = b
     }
 
@@ -30,7 +30,7 @@ class OnPageChangeListenerObj : ViewPager.OnPageChangeListener {
     //---
     private var _C: ((state: Int) -> Unit)? = null
 
-    fun onPageScrollStateChanged_ex(c: ((state: Int) -> Unit)) {
+    fun _onPageScrollStateChanged(c: ((state: Int) -> Unit)) {
         _C = c
     }
 
@@ -40,5 +40,5 @@ class OnPageChangeListenerObj : ViewPager.OnPageChangeListener {
 }
 
 
-inline fun ViewPager.addOnPageChangeListener(func: (OnPageChangeListenerObj.() -> Unit)) =
+inline fun ViewPager._addOnPageChangeListener(func: (OnPageChangeListenerObj.() -> Unit)) =
     addOnPageChangeListener(OnPageChangeListenerObj().apply(func))

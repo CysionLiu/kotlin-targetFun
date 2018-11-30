@@ -7,8 +7,8 @@ import com.cysion.sample.R
 import com.cysion.sample.adapter.SimpleAdapter
 import com.cysion.sample.logd
 import com.cysion.sample.logi
-import com.cysion.targetfun.addOnItemTouchListener
-import com.cysion.targetfun.addOnScrollListener
+import com.cysion.targetfun._addOnItemTouchListener
+import com.cysion.targetfun._addOnScrollListener
 import kotlinx.android.synthetic.main.activity_recycler.*
 
 class RecyclerActivity : AppCompatActivity() {
@@ -26,14 +26,14 @@ class RecyclerActivity : AppCompatActivity() {
             )
         )
 
-        recyclerView.addOnScrollListener {
-            onScrollStateChanged_ex { recyclerView, newState ->
+        recyclerView._addOnScrollListener {
+            _onScrollStateChanged { recyclerView, newState ->
                 logd("newstate:$newState")
             }
         }
 
-        recyclerView.addOnItemTouchListener {
-            onInterceptTouchEvent_ex { rv, e ->
+        recyclerView._addOnItemTouchListener {
+            _onInterceptTouchEvent { rv, e ->
                 logi("e.rawY:${e?.rawY}")
                 false
             }

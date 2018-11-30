@@ -9,7 +9,7 @@ class DrawerListenerObj : DrawerLayout.DrawerListener {
     //--------------------------------------------------
     private var _a: ((newState: Int) -> Unit)? = null
 
-    fun onDrawerStateChanged_ex(t: ((newState: Int) -> Unit)) {
+    fun _onDrawerStateChanged(t: ((newState: Int) -> Unit)) {
         _a = t
     }
 
@@ -20,7 +20,7 @@ class DrawerListenerObj : DrawerLayout.DrawerListener {
     //--------------------------------------------------
     private var _b: ((drawerView: View, slideOffset: Float) -> Unit)? = null
 
-    fun onDrawerSlide_ex(t: ((drawerView: View, slideOffset: Float) -> Unit)) {
+    fun _onDrawerSlide(t: ((drawerView: View, slideOffset: Float) -> Unit)) {
         _b = t
     }
 
@@ -32,7 +32,7 @@ class DrawerListenerObj : DrawerLayout.DrawerListener {
     //--------------------------------------------------
     private var _c: ((drawerView: View) -> Unit)? = null
 
-    fun onDrawerClosed_ex(t: ((drawerView: View) -> Unit)) {
+    fun _onDrawerClosed(t: ((drawerView: View) -> Unit)) {
         _c = t
     }
 
@@ -44,7 +44,7 @@ class DrawerListenerObj : DrawerLayout.DrawerListener {
     //--------------------------------------------------
     private var _d: ((drawerView: View) -> Unit)? = null
 
-    fun onDrawerOpened_ex(t: ((drawerView: View) -> Unit)) {
+    fun _onDrawerOpened(t: ((drawerView: View) -> Unit)) {
         _d = t
     }
 
@@ -54,6 +54,6 @@ class DrawerListenerObj : DrawerLayout.DrawerListener {
 
 }
 
-inline fun DrawerLayout.addDrawerListener(func: DrawerListenerObj.() -> Unit) {
+inline fun DrawerLayout._addDrawerListener(func: DrawerListenerObj.() -> Unit) {
     addDrawerListener(DrawerListenerObj().apply(func))
 }
