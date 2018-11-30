@@ -54,6 +54,5 @@ class DrawerListenerObj : DrawerLayout.DrawerListener {
 
 }
 
-inline fun DrawerLayout._addDrawerListener(func: DrawerListenerObj.() -> Unit) {
+inline fun DrawerLayout._addDrawerListener(func: DrawerListenerObj.() -> Unit) =
     addDrawerListener(DrawerListenerObj().apply(func))
-}

@@ -19,6 +19,7 @@ class EditTextActivity : AppCompatActivity() {
                 logd("_onTextChanged:$s")
             }
         }
+
         et2._addTextChangedListener {
             _beforeTextChanged { s, start, count, after ->
                 logd("_beforeTextChanged:$s")
@@ -28,6 +29,7 @@ class EditTextActivity : AppCompatActivity() {
                 logd("_afterTextChanged:${it.toString()}")
             }
         }
+
         et3._addTextChangedListener {
             _beforeTextChanged { s, start, count, after ->
                 logd("_beforeTextChanged:$s")

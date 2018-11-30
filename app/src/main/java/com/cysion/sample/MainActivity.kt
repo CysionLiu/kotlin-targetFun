@@ -9,15 +9,10 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.BaseAdapter
 import android.widget.TextView
-import com.cysion.other.addTo
 import com.cysion.sample.activity.*
 import com.cysion.sample.data.PageData
-import com.cysion.targetfun._subscribe
-import io.reactivex.Observable
-import io.reactivex.disposables.CompositeDisposable
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.item_main_list.view.*
-import java.util.concurrent.TimeUnit
 
 class MainActivity : AppCompatActivity() {
     var datalist: MutableList<PageData> = mutableListOf()
@@ -32,7 +27,6 @@ class MainActivity : AppCompatActivity() {
                 startActivity(Intent(this@MainActivity, datalist[position].target))
             }
         }
-        foo()
     }
 
     private fun initDataList() {
@@ -43,50 +37,8 @@ class MainActivity : AppCompatActivity() {
         datalist.add(PageData(RecyclerActivity::class.java, "RecyclerView sample"))
         datalist.add(PageData(SeekBarActivity::class.java, "SeekBar sample"))
         datalist.add(PageData(DrawerActivity::class.java, "DrawerListener sample"))
+        datalist.add(PageData(RxActivity::class.java, "Observable sample"))
         datalist.add(PageData(OtherActivity::class.java, "Other extension function sample"))
-    }
-
-    override fun onStop() {
-        super.onStop()
-        com.dispose()
-    }
-
-    var com: CompositeDisposable = CompositeDisposable()
-    fun foo() {
-        Observable.interval(1, TimeUnit.SECONDS)
-            .subscribe({
-                logd(it.toString())
-            }, {
-                logd("error")
-            },
-                {
-                    logd("finish")
-                }).addTo(com)
-        Observable.interval(1, TimeUnit.SECONDS)
-            ._subscribe {
-                _onNext {
-                    logi(it.toString())
-                }
-                _onComplete {
-                    logi("complete")
-                }
-                _onError {
-                    logd(it.message.toString())
-                }
-            }.addTo(com)
-//        val _subscribe = Observable.just(
-//            PageData(MainActivity::class.java, "one"),
-//            PageData(MainActivity::class.java, "two")
-//        )
-//            ._subscribe {
-//                _onSubscribe {
-//                    logd("_onSubscribe PageData")
-//                }
-//                _onNext {
-//                    logd(it.name)
-//                }
-//            }
-
     }
 }
 
