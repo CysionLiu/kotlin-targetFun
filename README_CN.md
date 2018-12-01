@@ -17,7 +17,8 @@
 
 或者这样
 
-        EditText(this)._addTextChangedListener {
+	
+	EditText(this)._addTextChangedListener {
             _beforeTextChanged { s, start, count, after ->
                 //do sth
             }
@@ -27,7 +28,7 @@
         }
 或者这样
 
-        EditText(this)._addTextChangedListener {
+ 	EditText(this)._addTextChangedListener {
             _onTextChanged { s, start, before, count ->
                 //do sth
             }
@@ -48,7 +49,7 @@
             }
 或者这样
 
-        Observable.just("1","2","3")
+ 	Observable.just("1","2","3")
             ._subscribe {
                 _onNext {
                     //do sth
@@ -60,7 +61,7 @@
 
 或者这样
 
-        Observable.just("1","2","3")
+ 	Observable.just("1","2","3")
             ._subscribe {
                 _onNext {
                     //do sth
@@ -151,19 +152,19 @@ Edittext的扩展函数，打开/关闭键盘
 过滤频繁点击
 
 	Button(this)._setOnClickListener {
-
-        }
+		}
 
 跳转Activity,1000请求码
 
- 	_startActivityForResult<EditExActivity>(1000)
+	_startActivityForResult<EditExActivity>(1000)
 
-	 _startActivity<EditExActivity>()
+	_startActivity<EditExActivity>()
 
 
 str(resid),  drawable(resid)等方法
 
 	TextView(this).text=str(R.string.app_name)
+
 
 
 待补充...
