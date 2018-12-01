@@ -114,6 +114,9 @@ android studio 新版本默认 buildToolsVersion默认 28.0.2
 本库目的既然是基于原SDK接口的优化使用，自然用法跟原接口特别相似，最明显的差别就是所有的方法都是以 '_'开头，虽然这与常见的java语言开发规范不同，但kotlin很灵活，特别是扩展函数，考虑到更好的使用和标识，所以方法以 _开头。
 
 
+**喜欢的右上角请Star一下，您的支持是我莫大的动力**
+
+
 **TextWatcher**
 
 <img src="gif/edittext.gif" width="80%" >

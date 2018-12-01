@@ -114,7 +114,9 @@ buildToolsVersion is default  28.0.2 in Android Studio lastest version
 ### using TargetFun
 
 
-Note that all methods in the lib are start with _ , maybe it is nonstandard, but it is really convenient and symbolic.
+Note that all methods in the lib start with _ , maybe it is nonstandard, but it is really convenient and symbolic.
+
+
 
 
 **TextWatcher**
