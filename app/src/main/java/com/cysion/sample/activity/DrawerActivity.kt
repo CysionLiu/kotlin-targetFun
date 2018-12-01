@@ -4,7 +4,6 @@ import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.view.Gravity
 import com.cysion.other._setOnClickListener
-import com.cysion.other.str
 import com.cysion.sample.R
 import com.cysion.sample.logd
 import com.cysion.targetfun._addDrawerListener
@@ -26,9 +25,6 @@ class DrawerActivity : AppCompatActivity() {
             }
             _onDrawerClosed {
                 logd("closed")
-            }
-            _onDrawerSlide { drawerView, slideOffset ->
-                logd("slide:${this@DrawerActivity.str(R.string.app_name)}")
             }
             _onDrawerStateChanged {
                 logd("newstate:$it")

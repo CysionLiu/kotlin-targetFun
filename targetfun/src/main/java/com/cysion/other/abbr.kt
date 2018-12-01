@@ -16,35 +16,36 @@ import android.widget.EditText
 import java.text.SimpleDateFormat
 
 
-inline fun <reified T : Activity> Activity.startActivity_ex() {
+inline fun <reified T : Activity> Activity._startActivity() {
     val i = Intent(this, T::class.java)
     startActivity(i)
 }
 
-inline fun <reified T : Activity> Activity.startActivityForResult_ex(requestcode: Int) {
+inline fun <reified T : Activity> Activity._startActivityForResult(requestcode: Int) {
     val i = Intent(this, T::class.java)
     startActivityForResult(i, requestcode)
 }
 
-inline fun <reified T : Activity> Activity.startActivity_ex(key: String, bundle: Bundle) {
+inline fun <reified T : Activity> Activity._startActivity(key: String, bundle: Bundle) {
     val i = Intent(this, T::class.java)
     i.putExtra(key, bundle)
     startActivity(i)
 }
 
-inline fun <reified T : Activity> Activity.startActivityForResult_ex(key: String, bundle: Bundle, requestcode: Int) {
+inline fun <reified T : Activity> Activity._startActivityForResult(key: String, bundle: Bundle, requestcode: Int) {
     val i = Intent(this, T::class.java)
     i.putExtra(key, bundle)
     startActivityForResult(i, requestcode)
 }
 
-//only available on true device
+//may only available on real device
 fun EditText.openKeyBoard() {
     val imm = this.context.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
     imm.showSoftInput(this, InputMethodManager.RESULT_SHOWN)
     imm.toggleSoftInput(InputMethodManager.SHOW_FORCED, InputMethodManager.HIDE_IMPLICIT_ONLY)
 }
 
+//may only available on real device
 fun EditText.hideKeyBoard() {
     val imm = this.context.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
     imm.hideSoftInputFromWindow(this.windowToken, 0)

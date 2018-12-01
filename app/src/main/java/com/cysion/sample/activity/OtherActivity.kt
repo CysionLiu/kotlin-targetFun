@@ -3,9 +3,7 @@ package com.cysion.sample.activity
 import android.content.Intent
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
-import com.cysion.other._setOnClickListener
-import com.cysion.other.startActivityForResult_ex
-import com.cysion.other.timeFormatm
+import com.cysion.other.*
 import com.cysion.sample.R
 import com.cysion.sample.activity.other.EditExActivity
 import com.cysion.sample.logd
@@ -19,13 +17,17 @@ class OtherActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_other)
         btnEditEx.setOnClickListener {
-            startActivityForResult_ex<EditExActivity>(1000)
+            _startActivityForResult<EditExActivity>(1000)
         }
 
         btnFilter._setOnClickListener {
             logd("clicked--" + System.currentTimeMillis().timeFormatm(""))
         }
-
+//
+//        //or
+//        btnFilter._setOnClickListener(2000){
+//            //click interval 2s
+//        }
         btnFilter._addOnAttachStateChangeListener {
             _onAttached {
                 logd("btnFilter attached")
@@ -33,6 +35,16 @@ class OtherActivity : AppCompatActivity() {
             _onDetached {
                 logd("btnFilter detached")
             }
+        }
+
+        btnUnit.setOnClickListener {
+            logd(dp2px(12).toString())
+            logd(px2dp(60f).toString())
+        }
+
+        btnOther.setOnClickListener {
+            btnOther.text = str(R.string.app_name)
+            btnOther.background=drawable(R.mipmap.ic_launcher)
         }
     }
 

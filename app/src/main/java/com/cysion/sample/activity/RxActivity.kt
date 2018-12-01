@@ -5,9 +5,8 @@ import android.support.v7.app.AppCompatActivity
 import com.cysion.other.addTo
 import com.cysion.sample.R
 import com.cysion.sample.logd
-import com.cysion.sample.logi
 import com.cysion.targetfun._subscribe
-import io.reactivex.Observable
+import io.reactivex.*
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import kotlinx.android.synthetic.main.activity_rx.*
@@ -15,13 +14,12 @@ import java.util.concurrent.TimeUnit
 
 class RxActivity : AppCompatActivity() {
 
-    val com = CompositeDisposable()
+    val cd = CompositeDisposable()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_rx)
 
         btnOpen1.setOnClickListener {
-
             Observable.just("1", "2", "3", "4", "5")
                 ._subscribe {
                     _onNext {
@@ -30,10 +28,8 @@ class RxActivity : AppCompatActivity() {
                     _onComplete {
                         logd("on complete")
                     }
-                }
-                .addTo(com)
+                }.addTo(cd)
         }
-
 
         btnOpen2.setOnClickListener {
             Observable.interval(1, TimeUnit.SECONDS)
@@ -48,34 +44,33 @@ class RxActivity : AppCompatActivity() {
                     _onError {
                         logd("_onerror")
                     }
-                }
-                .addTo(com)
+                }.addTo(cd)
+
         }
 
         btnOpen3.setOnClickListener {
-            Observable.just(1, 2)
-                .concatMap {
-                    if(it==1){
-                        Observable.just(it).delay(5,TimeUnit.SECONDS)
-                    }else{
-                        Observable.just(it).delay(2,TimeUnit.SECONDS)
-                    }
+            Flowable.create(object : FlowableOnSubscribe<String> {
+                override fun subscribe(emitter: FlowableEmitter<String>) {
+                    emitter.onNext("flow1")
+                    emitter.onNext("flow2")
+                    emitter.onNext("flow3")
+                    emitter.onNext("flow4")
+                    emitter.onComplete()
                 }
-                .observeOn(AndroidSchedulers.mainThread())
+            }, BackpressureStrategy.MISSING)
                 ._subscribe {
                     _onNext {
-                        tvShow3.append(" * ${it}")
+                        logd("flowable--$it")
                     }
-                    _onError {
-                        logi("_ error__")
+                    _onComplete {
+                        logd("flowable complete")
                     }
-                }.addTo(com)
+                }
         }
 
         btnclose.setOnClickListener {
-            com.clear()
+            cd.clear()
         }
-
     }
 }
 
