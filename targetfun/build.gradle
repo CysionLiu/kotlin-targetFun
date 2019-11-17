@@ -35,7 +35,7 @@ repositories {
 //    groupId = 'com.cysion'//jcenter上的路径，你喜欢
 //    artifactId = 'targetfun'
 //    repoName='TargetFun'
-//    publishVersion = '1.0.0'//版本号
+//    publishVersion = '1.2.0'//版本号
 //    desc = 'For ease of Android development'//描述，随便
 //    website = 'https://github.com/CysionLiu/kotlin-targetFun'//网站，随便；
 //}
