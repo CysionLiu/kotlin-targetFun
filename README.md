@@ -15,7 +15,7 @@ Using this lib,  you can add a TextWather to an EditText just like this：
             ifTextChanged { s, start, before, count ->
                 //do sth
             }
-        }
+    }
 
 or like this
 
@@ -27,7 +27,7 @@ or like this
             ifTextChanged { s, start, before, count ->
                 //do sth
             }
-        }
+     }
 
 or like this
 
@@ -38,7 +38,7 @@ or like this
             ifAfterTextChanged {
                 //do sth
             }
-        }
+    }
 
 
 **if you have used Rxjava in your project, you can use Observer like this:**
