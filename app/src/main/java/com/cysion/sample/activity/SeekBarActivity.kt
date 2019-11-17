@@ -5,7 +5,7 @@ import android.support.v7.app.AppCompatActivity
 import com.cysion.sample.R
 import com.cysion.sample.logd
 import com.cysion.sample.logi
-import com.cysion.targetfun._setOnSeekBarChangeListener
+import com.cysion.targetfun.withSeekBarChangeListener
 import kotlinx.android.synthetic.main.activity_seekbar.*
 
 class SeekBarActivity : AppCompatActivity() {
@@ -15,7 +15,7 @@ class SeekBarActivity : AppCompatActivity() {
         setContentView(R.layout.activity_seekbar)
 
         //the original style
-//        seekbar._setOnSeekBarChangeListener(object :SeekBar.OnSeekBarChangeListener{
+//        seekbar.withSeekBarChangeListener(object :SeekBar.OnSeekBarChangeListener{
 //            override fun onProgressChanged(seekBar: SeekBar?, progress: Int, fromUser: Boolean) {
 //                TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
 //            }
@@ -29,21 +29,21 @@ class SeekBarActivity : AppCompatActivity() {
 //            }
 //
 //        })
-        seekbar._setOnSeekBarChangeListener {
-            _onStartTouch {
+        seekbar.withSeekBarChangeListener {
+            ifStartTouch {
                 logd("start touch")
             }
 
-            _onProgressChanged { seekBar, progress, fromUser ->
+            ifChanged { seekBar, progress, fromUser ->
                 logd("progress:$progress")
             }
         }
 
-        appcompatSeekBar._setOnSeekBarChangeListener {
-            _onProgressChanged { seekBar, progress, fromUser ->
+        appcompatSeekBar.withSeekBarChangeListener {
+            ifChanged { seekBar, progress, fromUser ->
                 logi("progress:$progress")
             }
-            _onStopTouch {
+            ifStopTouch {
                 logi("appcompat stop touch，progress:${it?.progress}")
             }
         }

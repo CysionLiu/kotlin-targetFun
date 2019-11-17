@@ -3,10 +3,10 @@ package com.cysion.sample.activity
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.view.Gravity
-import com.cysion.other._setOnClickListener
+import com.cysion.other.clickWithLimit
 import com.cysion.sample.R
 import com.cysion.sample.logd
-import com.cysion.targetfun._addDrawerListener
+import com.cysion.targetfun.withDrawerListener
 import kotlinx.android.synthetic.main.activity_drawer.*
 
 class DrawerActivity : AppCompatActivity() {
@@ -15,18 +15,18 @@ class DrawerActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_drawer)
 
-        btnOpen._setOnClickListener {
+        btnOpen.clickWithLimit {
             drawer.openDrawer(Gravity.RIGHT)
         }
 
-        drawer._addDrawerListener {
-            _onDrawerOpened {
+        drawer.withDrawerListener {
+            ifOpened {
                 logd("opened")
             }
-            _onDrawerClosed {
+            ifClosed {
                 logd("closed")
             }
-            _onDrawerStateChanged {
+            ifStateChanged {
                 logd("newstate:$it")
             }
         }

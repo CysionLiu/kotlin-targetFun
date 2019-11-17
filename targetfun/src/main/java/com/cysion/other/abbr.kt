@@ -16,23 +16,23 @@ import android.widget.EditText
 import java.text.SimpleDateFormat
 
 
-inline fun <reified T : Activity> Activity._startActivity() {
+inline fun <reified T : Activity> Activity.gotoActivity() {
     val i = Intent(this, T::class.java)
     startActivity(i)
 }
 
-inline fun <reified T : Activity> Activity._startActivityForResult(requestcode: Int) {
+inline fun <reified T : Activity> Activity.gotoActivityForResult(requestcode: Int) {
     val i = Intent(this, T::class.java)
     startActivityForResult(i, requestcode)
 }
 
-inline fun <reified T : Activity> Activity._startActivity(key: String, bundle: Bundle) {
+inline fun <reified T : Activity> Activity.gotoActivity(key: String, bundle: Bundle) {
     val i = Intent(this, T::class.java)
     i.putExtra(key, bundle)
     startActivity(i)
 }
 
-inline fun <reified T : Activity> Activity._startActivityForResult(key: String, bundle: Bundle, requestcode: Int) {
+inline fun <reified T : Activity> Activity.gotoActivityForResult(key: String, bundle: Bundle, requestcode: Int) {
     val i = Intent(this, T::class.java)
     i.putExtra(key, bundle)
     startActivityForResult(i, requestcode)
@@ -52,7 +52,7 @@ fun EditText.hideKeyBoard() {
 }
 
 //filter frequent click event
-fun View._setOnClickListener(block: ((v: View?) -> Unit)) {
+fun View.clickWithLimit(block: ((v: View?) -> Unit)) {
     setOnClickListener(object : View.OnClickListener {
         var last = 0L
         override fun onClick(v: View?) {
@@ -63,7 +63,7 @@ fun View._setOnClickListener(block: ((v: View?) -> Unit)) {
         }
     })
 }
-fun View._setOnClickListener(intervalMill:Int,block: ((v: View?) -> Unit)) {
+fun View.clickWithLimit(intervalMill:Int, block: ((v: View?) -> Unit)) {
     setOnClickListener(object : View.OnClickListener {
         var last = 0L
         override fun onClick(v: View?) {

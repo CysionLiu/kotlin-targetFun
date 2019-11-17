@@ -4,7 +4,7 @@ import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import com.cysion.sample.R
 import com.cysion.sample.logd
-import com.cysion.targetfun._addTextChangedListener
+import com.cysion.targetfun.withTextChangedListener
 import kotlinx.android.synthetic.main.activity_edittext.*
 
 class EditTextActivity : AppCompatActivity() {
@@ -13,33 +13,33 @@ class EditTextActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_edittext)
 
-        et1._addTextChangedListener {
-            _onTextChanged { s, start, before, count ->
-                tvShow.text = "_onTextChanged:$s"
-                logd("_onTextChanged:$s")
+        et1.withTextChangedListener {
+            ifTextChanged { s, start, before, count ->
+                tvShow.text = "ifTextChanged:$s"
+                logd("ifTextChanged:$s")
             }
         }
 
-        et2._addTextChangedListener {
-            _beforeTextChanged { s, start, count, after ->
-                logd("_beforeTextChanged:$s")
+        et2.withTextChangedListener {
+            ifBeforeTextChanged { s, start, count, after ->
+                logd("ifBeforeTextChanged:$s")
             }
-            _afterTextChanged {
-                tvShow.text = "_afterTextChanged:${it.toString()}"
-                logd("_afterTextChanged:${it.toString()}")
+            ifAfterTextChanged {
+                tvShow.text = "ifAfterTextChanged:${it.toString()}"
+                logd("ifAfterTextChanged:${it.toString()}")
             }
         }
 
-        et3._addTextChangedListener {
-            _beforeTextChanged { s, start, count, after ->
-                logd("_beforeTextChanged:$s")
+        et3.withTextChangedListener {
+            ifBeforeTextChanged { s, start, count, after ->
+                logd("ifBeforeTextChanged:$s")
             }
-            _onTextChanged { s, start, before, count ->
-                logd("_onTextChanged:$s")
+            ifTextChanged { s, start, before, count ->
+                logd("ifTextChanged:$s")
             }
-            _afterTextChanged {
-                tvShow.text = "_afterTextChanged:${it.toString()}"
-                logd("_afterTextChanged:${it.toString()}")
+            ifAfterTextChanged {
+                tvShow.text = "ifAfterTextChanged:${it.toString()}"
+                logd("ifAfterTextChanged:${it.toString()}")
             }
         }
     }

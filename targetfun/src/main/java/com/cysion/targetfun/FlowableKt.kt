@@ -16,13 +16,13 @@ class FlowableObj<T> : FlowableSubscriber<T> {
         _a?.invoke(s)
     }
 
-    fun _onSubscribe(t: ((s: Subscription) -> Unit)) {
+    fun ifSubscribe(t: ((s: Subscription) -> Unit)) {
         _a = t
     }
 
 
     //===
-    fun _onNext(t: ((t: T) -> Unit)) {
+    fun ifNext(t: ((t: T) -> Unit)) {
         _b = t
     }
 
@@ -31,7 +31,7 @@ class FlowableObj<T> : FlowableSubscriber<T> {
     }
 
     //===
-    fun _onComplete(t: (() -> Unit)) {
+    fun ifComplete(t: (() -> Unit)) {
         _c = t
     }
 
@@ -40,7 +40,7 @@ class FlowableObj<T> : FlowableSubscriber<T> {
     }
 
     //===
-    fun _onError(t: ((e: Throwable) -> Unit)) {
+    fun ifError(t: ((e: Throwable) -> Unit)) {
         _d = t
     }
 
@@ -49,5 +49,5 @@ class FlowableObj<T> : FlowableSubscriber<T> {
     }
 }
 
-inline fun <reified T> Flowable<T>._subscribe(func: FlowableObj<T>.() -> Unit) =
+inline fun <reified T> Flowable<T>.withSubscribe(func: FlowableObj<T>.() -> Unit) =
     subscribe(FlowableObj<T>().apply(func))

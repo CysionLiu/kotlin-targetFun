@@ -8,7 +8,7 @@ import com.cysion.sample.R
 import com.cysion.sample.activity.other.EditExActivity
 import com.cysion.sample.logd
 import com.cysion.sample.logi
-import com.cysion.targetfun._addOnAttachStateChangeListener
+import com.cysion.targetfun.withAttachStateChangeListener
 import kotlinx.android.synthetic.main.activity_other.*
 
 class OtherActivity : AppCompatActivity() {
@@ -17,22 +17,22 @@ class OtherActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_other)
         btnEditEx.setOnClickListener {
-            _startActivityForResult<EditExActivity>(1000)
+            gotoActivityForResult<EditExActivity>(1000)
         }
 
-        btnFilter._setOnClickListener {
+        btnFilter.clickWithLimit {
             logd("clicked--" + System.currentTimeMillis().timeFormatm(""))
         }
 //
 //        //or
-//        btnFilter._setOnClickListener(2000){
+//        btnFilter.clickWithLimit(2000){
 //            //click interval 2s
 //        }
-        btnFilter._addOnAttachStateChangeListener {
-            _onAttached {
+        btnFilter.withAttachStateChangeListener {
+            ifAttached {
                 logd("btnFilter attached")
             }
-            _onDetached {
+            ifDetached {
                 logd("btnFilter detached")
             }
         }

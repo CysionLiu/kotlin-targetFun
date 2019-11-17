@@ -14,7 +14,7 @@ class ObserverObj<T> : Observer<T> {
     private lateinit var disposable: Disposable
 
     //===
-    fun _onSubscribe(t: ((disposable: Disposable) -> Unit)) {
+    fun ifSubscribe(t: ((disposable: Disposable) -> Unit)) {
         _a = t
     }
 
@@ -26,7 +26,7 @@ class ObserverObj<T> : Observer<T> {
 
 
     //===
-    fun _onNext(t: ((t: T) -> Unit)) {
+    fun ifNext(t: ((t: T) -> Unit)) {
         _b = t
     }
 
@@ -35,7 +35,7 @@ class ObserverObj<T> : Observer<T> {
     }
 
     //===
-    fun _onComplete(t: (() -> Unit)) {
+    fun ifComplete(t: (() -> Unit)) {
         _c = t
     }
 
@@ -45,7 +45,7 @@ class ObserverObj<T> : Observer<T> {
 
 
     //===
-    fun _onError(t: ((e: Throwable) -> Unit)) {
+    fun ifError(t: ((e: Throwable) -> Unit)) {
         _d = t
     }
 
@@ -58,7 +58,7 @@ class ObserverObj<T> : Observer<T> {
     }
 }
 
-inline fun <reified T> Observable<T>._subscribe(func: ObserverObj<T>.() -> Unit): Disposable {
+inline fun <reified T> Observable<T>.withSubscribe(func: ObserverObj<T>.() -> Unit): Disposable {
     val real = ObserverObj<T>()
     real.func()
     subscribe(real)

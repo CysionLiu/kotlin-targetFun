@@ -7,7 +7,7 @@ class OnScrollListenerObj : AbsListView.OnScrollListener {
     private var _a: ((view: AbsListView?, firstVisibleItem: Int, visibleItemCount: Int, totalItemCount: Int) -> Unit)? =
         null
 
-    fun _onScroll(t: ((view: AbsListView?, firstVisibleItem: Int, visibleItemCount: Int, totalItemCount: Int) -> Unit)) {
+    fun ifScroll(t: ((view: AbsListView?, firstVisibleItem: Int, visibleItemCount: Int, totalItemCount: Int) -> Unit)) {
         _a = t
     }
 
@@ -19,7 +19,7 @@ class OnScrollListenerObj : AbsListView.OnScrollListener {
     private var _b: ((view: AbsListView?, scrollState: Int) -> Unit)? =
         null
 
-    fun _onScrollStateChanged(t: ((view: AbsListView?, scrollState: Int) -> Unit)) {
+    fun _ifStateChanged(t: ((view: AbsListView?, scrollState: Int) -> Unit)) {
         _b = t
     }
 
@@ -29,5 +29,5 @@ class OnScrollListenerObj : AbsListView.OnScrollListener {
 }
 
 //also available for gridview
-inline fun AbsListView._setOnScrollListener(func: (OnScrollListenerObj.() -> Unit)) =
+inline fun AbsListView.withScrollListener(func: (OnScrollListenerObj.() -> Unit)) =
     setOnScrollListener(OnScrollListenerObj().apply(func))

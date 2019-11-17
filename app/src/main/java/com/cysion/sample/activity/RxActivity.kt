@@ -5,7 +5,7 @@ import android.support.v7.app.AppCompatActivity
 import com.cysion.other.addTo
 import com.cysion.sample.R
 import com.cysion.sample.logd
-import com.cysion.targetfun._subscribe
+import com.cysion.targetfun.withSubscribe
 import io.reactivex.*
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
@@ -21,11 +21,11 @@ class RxActivity : AppCompatActivity() {
 
         btnOpen1.setOnClickListener {
             Observable.just("1", "2", "3", "4", "5")
-                ._subscribe {
-                    _onNext {
+                .withSubscribe {
+                    ifNext {
                         tvShow1.append("$it - ")
                     }
-                    _onComplete {
+                    ifComplete {
                         logd("on complete")
                     }
                 }.addTo(cd)
@@ -37,11 +37,11 @@ class RxActivity : AppCompatActivity() {
                     Tmp("demo", it.toInt())
                 }
                 .observeOn(AndroidSchedulers.mainThread())
-                ._subscribe {
-                    _onNext {
+                .withSubscribe {
+                    ifNext {
                         tvShow2.append(" * ${it.age}")
                     }
-                    _onError {
+                    ifError {
                         logd("_onerror")
                     }
                 }.addTo(cd)
@@ -58,11 +58,11 @@ class RxActivity : AppCompatActivity() {
                     emitter.onComplete()
                 }
             }, BackpressureStrategy.MISSING)
-                ._subscribe {
-                    _onNext {
+                .withSubscribe {
+                    ifNext {
                         logd("flowable--$it")
                     }
-                    _onComplete {
+                    ifComplete {
                         logd("flowable complete")
                     }
                 }

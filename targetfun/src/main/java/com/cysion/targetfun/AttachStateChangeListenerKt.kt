@@ -7,7 +7,7 @@ class AttachStateChangeListenerObj : View.OnAttachStateChangeListener {
     //-------------------------------------------------
     private var _a: ((v: View?) -> Unit)? = null
 
-    fun _onDetached(t: ((v: View?) -> Unit)) {
+    fun ifDetached(t: ((v: View?) -> Unit)) {
         _a = t
     }
 
@@ -18,7 +18,7 @@ class AttachStateChangeListenerObj : View.OnAttachStateChangeListener {
     //----------------------------------------------------
     private var _b: ((v: View?) -> Unit)? = null
 
-    fun _onAttached(t: ((v: View?) -> Unit)) {
+    fun ifAttached(t: ((v: View?) -> Unit)) {
         _b = t
     }
 
@@ -27,5 +27,5 @@ class AttachStateChangeListenerObj : View.OnAttachStateChangeListener {
     }
 }
 
-inline fun View._addOnAttachStateChangeListener(func: (AttachStateChangeListenerObj.() -> Unit)) =
+inline fun View.withAttachStateChangeListener(func: (AttachStateChangeListenerObj.() -> Unit)) =
     addOnAttachStateChangeListener(AttachStateChangeListenerObj().apply(func))

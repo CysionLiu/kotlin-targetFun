@@ -8,7 +8,7 @@ import android.view.ViewGroup
 import android.widget.BaseAdapter
 import com.cysion.sample.R
 import com.cysion.sample.logd
-import com.cysion.targetfun._setOnScrollListener
+import com.cysion.targetfun.withScrollListener
 import kotlinx.android.synthetic.main.activity_list.*
 import kotlinx.android.synthetic.main.item_main_list.view.*
 
@@ -47,8 +47,8 @@ class ListActivity : AppCompatActivity() {
         }
 
         //also available for gridview
-        listView._setOnScrollListener {
-            _onScroll { view, firstVisibleItem, visibleItemCount, totalItemCount ->
+        listView.withScrollListener {
+            ifScroll { view, firstVisibleItem, visibleItemCount, totalItemCount ->
                 logd("firstVisibleItem:$firstVisibleItem,visibleItemCount:$visibleItemCount")
             }
         }

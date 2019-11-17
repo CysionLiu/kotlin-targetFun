@@ -7,7 +7,7 @@ class SeekBarChangeListenerObj : SeekBar.OnSeekBarChangeListener {
     //----------------------------------------------
     private var _a: ((seekBar: SeekBar?, progress: Int, fromUser: Boolean) -> Unit)? = null
 
-    fun _onProgressChanged(t: ((seekBar: SeekBar?, progress: Int, fromUser: Boolean) -> Unit)) {
+    fun ifChanged(t: ((seekBar: SeekBar?, progress: Int, fromUser: Boolean) -> Unit)) {
         _a = t
     }
 
@@ -18,7 +18,7 @@ class SeekBarChangeListenerObj : SeekBar.OnSeekBarChangeListener {
     //----------------------------------------------
     private var _b: ((seekBar: SeekBar?) -> Unit)? = null
 
-    fun _onStartTouch(t: ((seekBar: SeekBar?) -> Unit)) {
+    fun ifStartTouch(t: ((seekBar: SeekBar?) -> Unit)) {
         _b = t
     }
 
@@ -30,7 +30,7 @@ class SeekBarChangeListenerObj : SeekBar.OnSeekBarChangeListener {
     //----------------------------------------------
     private var _c: ((seekBar: SeekBar?) -> Unit)? = null
 
-    fun _onStopTouch(t: ((seekBar: SeekBar?) -> Unit)) {
+    fun ifStopTouch(t: ((seekBar: SeekBar?) -> Unit)) {
         _c = t
     }
 
@@ -40,5 +40,5 @@ class SeekBarChangeListenerObj : SeekBar.OnSeekBarChangeListener {
 
 }
 
-inline fun SeekBar._setOnSeekBarChangeListener(func: (SeekBarChangeListenerObj.() -> Unit)) =
+inline fun SeekBar.withSeekBarChangeListener(func: (SeekBarChangeListenerObj.() -> Unit)) =
     setOnSeekBarChangeListener(SeekBarChangeListenerObj().apply(func))

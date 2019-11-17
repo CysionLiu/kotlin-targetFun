@@ -9,7 +9,7 @@ import android.widget.TextView
 import com.cysion.sample.R
 import com.cysion.sample.logd
 import com.cysion.sample.logi
-import com.cysion.targetfun._addOnPageChangeListener
+import com.cysion.targetfun.WithPageChangeListener
 import kotlinx.android.synthetic.main.activity_viewpager.*
 
 class ViewPagerActivity : AppCompatActivity() {
@@ -19,18 +19,18 @@ class ViewPagerActivity : AppCompatActivity() {
         setContentView(R.layout.activity_viewpager)
         viewPager.apply {
             adapter = MyAdapter()
-            _addOnPageChangeListener {
-                _onPageSelected {
+            WithPageChangeListener {
+                ifSelected {
                     tvShow.text = "select page $it"
                     logi("listener:${this.toString()}")
                 }
-                _onPageScrolled { position, positionOffset, positionOffsetPixels ->
+                ifScrolled { position, positionOffset, positionOffsetPixels ->
                     logd("position:$position, positionOffset:$positionOffset")
                 }
             }
             //add another listener
-            _addOnPageChangeListener {
-                _onPageScrollStateChanged {
+            WithPageChangeListener {
+                ifStateChanged {
                     logd("state:$it")
                     logi("listener:${this.toString()}")
                 }

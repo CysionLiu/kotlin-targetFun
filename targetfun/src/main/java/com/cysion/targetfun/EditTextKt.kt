@@ -9,7 +9,7 @@ class TextWatcherObj : TextWatcher {
     //---
     private var _afterTextChanged: ((s: Editable?) -> Unit)? = null
 
-    fun _afterTextChanged(func: ((s: Editable?) -> Unit)) {
+    fun ifAfterTextChanged(func: ((s: Editable?) -> Unit)) {
         _afterTextChanged = func
     }
 
@@ -20,7 +20,7 @@ class TextWatcherObj : TextWatcher {
     //---
     private var _beforeTextChanged: ((s: CharSequence?, start: Int, count: Int, after: Int) -> Unit)? = null
 
-    fun _beforeTextChanged(func: ((s: CharSequence?, start: Int, count: Int, after: Int) -> Unit)) {
+    fun ifBeforeTextChanged(func: ((s: CharSequence?, start: Int, count: Int, after: Int) -> Unit)) {
         _beforeTextChanged = func
     }
 
@@ -32,7 +32,7 @@ class TextWatcherObj : TextWatcher {
     //---
     private var _onTextChanged: ((s: CharSequence?, start: Int, before: Int, count: Int) -> Unit)? = null
 
-    fun _onTextChanged(func: ((s: CharSequence?, start: Int, before: Int, count: Int) -> Unit)) {
+    fun ifTextChanged(func: ((s: CharSequence?, start: Int, before: Int, count: Int) -> Unit)) {
         _onTextChanged = func
     }
 
@@ -40,5 +40,5 @@ class TextWatcherObj : TextWatcher {
         _onTextChanged?.invoke(s, start, before, count)
     }
 }
-inline fun EditText._addTextChangedListener(func: (TextWatcherObj.() -> Unit))=
+inline fun EditText.withTextChangedListener(func: (TextWatcherObj.() -> Unit))=
     addTextChangedListener(TextWatcherObj().apply(func))
